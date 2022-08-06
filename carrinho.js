@@ -1,13 +1,13 @@
 class Carrinho {
     constructor() {
-        this.item = [];
+        this.itens = [];
         this.subtotal = null;
         this.frete = null;
         this.total = null;
     }
 
     adiciona(item) {
-        this.item.push(item);
+        this.itens.push(item);
     }
 
     adicionaFrete(valor) {
@@ -20,7 +20,7 @@ class Carrinho {
     }
 
     finalizaCompra() {
-        if (this.item.length === 0) {
+        if (this.itens.length === 0) {
             throw new Error('Carrinho de compras vazio!')
         }
 
