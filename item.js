@@ -5,7 +5,7 @@ class Item {
         this.quantidade = quantidade;
     }
 
-    pegaValorTotalItem() {
+    pegarValorTotalItem() {
         return this.quantidade * this.valor;
     }
 }

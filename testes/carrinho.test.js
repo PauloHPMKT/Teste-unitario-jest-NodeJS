@@ -13,7 +13,7 @@ describe('Teste dos itens', () => {
     it('Deve ter o preco calculado de acordo com a quantidade', () => {
         const item = new Item('Morango', 0.1, 3)
 
-        expect(item.pegaValorTotalItem()).toBeCloseTo(0.3)
+        expect(item.pegarValorTotalItem()).toBeCloseTo(0.3)
     });
 
     //testando metodo de adicionar itens ao carrinho
@@ -39,5 +39,31 @@ describe('Teste dos itens', () => {
         }
 
         expect(englobaErroCarrinho).toThrowError('Carrinho de compras vazio!')
+    });
+
+    it('Deve adicionar o frete', () => {
+        const carrinho = new Carrinho();
+        carrinho.adicionaFrete(10);
+
+        expect(carrinho.frete).toBe(10);
+    });
+
+    //testando metodo de finalizar compra
+    it('Deve finalizar as compras com sucesso!', () => {
+        const item = new Item('Banana', 2, 5);
+        const item2 = new Item('Melancia', 3.5, 10);
+        const carrinho = new Carrinho();
+
+        carrinho.adiciona(item);
+        carrinho.adiciona(item2);
+
+        carrinho.adicionaFrete(10);
+
+        expect(carrinho.finalizaCompra()).toStrictEqual({
+            subtotal: 15,
+            frete: 10,
+            total: 25,
+        })
+
     });
 });
